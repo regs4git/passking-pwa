@@ -218,5 +218,14 @@ $('visibilityBtn').addEventListener('click',()=>{$('anInput').type=$('anInput').
 window.addEventListener('online',()=>{$('networkStatus').textContent='Online'});window.addEventListener('offline',()=>{$('networkStatus').textContent='Offline — análise local disponível'});$('networkStatus').textContent=navigator.onLine?'Online':'Offline — análise local disponível';
 regenerate();
 </script>
+  <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./service-worker.js')
+        .then(() => console.log('Service worker registado'))
+        .catch((err) => console.error('Erro ao registar service worker:', err));
+    });
+  }
+</script>
 </body>
 </html>
